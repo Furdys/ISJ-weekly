@@ -1,9 +1,9 @@
 # [ISJ] Scripting languages
-FIT VUT Brno
-3rd semester (Summer 2017)
+Bachelor study at FIT VUT Brno  
+2nd semester (summer 2017)  
 **Weekly projects**
 
-# Score
+## Score
 * Project 1   4/5
 * Project 2   5/5
 * Project 3   5/5
@@ -13,24 +13,24 @@ FIT VUT Brno
 * Project 7   -/5
 * Project 8   5/5
 
-# Tasks
-## Project 1
+## Tasks
+### Project 1
 V kódu vypusťte prvky seznamů tests1 a tests2, ale pouze ty, které způsobují, že testy assert vyvolávají výjimky.
 Toto udělejte nejprve bez spouštění programu a zamyslete se, proč regulárním výrazům odpovídají a neodpovídají právě dané řetězce.
 
 Dopište definici regulárního výrazu punct tak, aby odpovídal pozici za čárkou nebo tečkou, s výjimkou případu, kdy bezprostředně před znakem a za daným místem stojí číslice (a aby tedy ani následný test assert nevypisoval chybu).
 
-## Project 2
+### Project 2
 V kódu doplňte pravé strany přiřazení vyznačených proměnných (jmen) tak, aby výsledky testů odpovídaly očekávaným hodnotám.
 
 Kód je formálně rozdělen do funkcí, ale to je jen pro potřeby oddělení jednotlivých podúkolů.
 
-## Project 3
+### Project 3
 V kódu doplňte pravé strany přiřazení vyznačených proměnných (jmen) a definici způsobu hašování tak, aby výsledky testů odpovídaly očekávaným hodnotám.
 
 Kód je formálně rozdělen do funkcí, ale to je jen pro potřeby oddělení jednotlivých podúkolů.
 
-## Project 4
+### Project 4
 balanced_paren(parenstr) - vrátí True, pokud je řetězec, v němž se jako závorky mohou vyskytnout znaky '()[]{}<>', správně uzávorkovaný, jinak False. Například pro řetězce '123', '[{}]', '12<4<[a]b>>5' vrátí True, pro '{1<2(>3)}' False.
 
 caesar_list(word, key) - vrátí vstupní řetězec zakódovaný podle klíče Caesarovou šifrou. Vstupní řetězec má být složený výhradně z 26 malých písmen anglické abecedy. Pokud tomu tak není, vyvolejte výjimku ValueError. Klíč má formu seznamu čísel, udávající posun v abecedě, např. [3,5,7]. Použije se cyklicky. Pokud tedy bude vstupem 'abc', a klíč [4,5], výsledkem má být 'egg'. Můžete využít itertools.cycle(). Pokud posun "přeteče" přes konec abecedy, začíná se od začátku. Pokud tedy bude vstupem 'xyz', a klíč [3,4,5,6,7], výsledkem má být 'ace'. Při volání funkce nemusí být parametr key zadán, potom se použije defaultní klíč [1,2,3]. 
@@ -43,7 +43,7 @@ Nezapomeňte na dokumentační řetězce všech funkcí.
 Dále každou logickou část kódu jednotlivých funkcí okomentujte, např.
 \# checking whether the item can be converted to int - try: int(item)
 
-## Project 5
+### Project 5
 implementujte třídu Polynomial, která bude pracovat s polynomy reprezentovanými pomocí seznamů. Například 2x^3 - 3x + 1 bude  reprezentováno jako [1,-3,0,2] (seznam začíná nejnižším řádem, i když se polynomy většinou zapisují opačně).
 
 Instance třídy bude možné vytvářet několika různými způsoby:
@@ -128,7 +128,7 @@ if __name__ == '__main__':
     test()
 ```
 
-## Project 6
+### Project 6
 - funkci first_nonrepeating, která dostane na vstup řetězec a vrátí první neopakující se znak ze vstupního řetězce:
 tooth -> h, lool -> None
 
@@ -138,7 +138,7 @@ Například combine4([6,6,5,2],36) by mohlo vrátit něco jako:
 případně jen ['(2+5)*6-6'], pokud se vám podaří odstraňovat výrazy kvůli komutativitě sčítání a násobení,
 případně i delší seznam, jehož prvky se budou lišit jen uzávorkováním.
 
-## Project 7
+### Project 7
 Dekorátor @limit_calls s parametry max_calls a error_message_tail (defaultní hodnoty 2 a 'called too often') pro obecné funkce tak, aby např.:
 ```python
 import math
@@ -185,7 +185,7 @@ Test2
 End
 ```
 
-## Project 8
+### Project 8
 S využitím modulu cProfile zjistěte, kolikrát je volána funkce lev() ve skriptu dostupném na https://www.fit.vutbr.cz/study/courses/ISJ/private/lev.py.
 Výsledek uložte do souboru lev.cProfile_output.
 
