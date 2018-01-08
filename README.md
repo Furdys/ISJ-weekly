@@ -1,17 +1,17 @@
-# [ISJ] Scripting languages
+# Weelky projects [ISJ project 1-8] Scripting languages
 Bachelor study at FIT VUT Brno  
-2nd semester (summer 2017)  
-**Weekly projects**
+2nd semester - summer 2017  
+Subject: **Scripting Languages (ISJ)**
 
 ## Score
-* Project 1   4/5
-* Project 2   5/5
-* Project 3   5/5
-* Project 4   5/5
-* Project 5   5/5
-* Project 6   5/5
-* Project 7   -/5
-* Project 8   5/5
+* Project 1: **4/5**
+* Project 2: **5/5**
+* Project 3: **5/5**
+* Project 4: **5/5**
+* Project 5: **5/5**
+* Project 6: **5/5**
+* Project 7: **0/5** (Not done)
+* Project 8: **5/5**
 
 ## Tasks
 ### Project 1
@@ -22,12 +22,10 @@ Dopište definici regulárního výrazu punct tak, aby odpovídal pozici za čá
 
 ### Project 2
 V kódu doplňte pravé strany přiřazení vyznačených proměnných (jmen) tak, aby výsledky testů odpovídaly očekávaným hodnotám.
-
 Kód je formálně rozdělen do funkcí, ale to je jen pro potřeby oddělení jednotlivých podúkolů.
 
 ### Project 3
 V kódu doplňte pravé strany přiřazení vyznačených proměnných (jmen) a definici způsobu hašování tak, aby výsledky testů odpovídaly očekávaným hodnotám.
-
 Kód je formálně rozdělen do funkcí, ale to je jen pro potřeby oddělení jednotlivých podúkolů.
 
 ### Project 4
@@ -38,10 +36,14 @@ caesar_list(word, key) - vrátí vstupní řetězec zakódovaný podle klíče C
 caesar_varnumkey - funguje stejně jako funkce caesar_list, jen klíč se při volání předává jako samostatné parametry, tedy např. caesar_varnumkey('xyz', 3, 5, 7)
 
 Jako první řádek skriptu uveďte tzv. shebang (viz https://en.wikipedia.org/wiki/Shebang_%28Unix%29), který umožní spuštění skriptu na fakultních serverech, takže např.:
+```python
 \#!/usr/bin/env python3
+```
 Nezapomeňte na dokumentační řetězce všech funkcí.
 Dále každou logickou část kódu jednotlivých funkcí okomentujte, např.
+```python
 \# checking whether the item can be converted to int - try: int(item)
+```
 
 ### Project 5
 implementujte třídu Polynomial, která bude pracovat s polynomy reprezentovanými pomocí seznamů. Například 2x^3 - 3x + 1 bude  reprezentováno jako [1,-3,0,2] (seznam začíná nejnižším řádem, i když se polynomy většinou zapisují opačně).
