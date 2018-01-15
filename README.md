@@ -1,4 +1,4 @@
-# Weelky projects (ISJ project 1-8)
+# Weekly projects (ISJ projects 1-8)
 Bachelor study at FIT VUT Brno  
 2nd semester - summer 2017  
 Subject: **Scripting Languages (ISJ)**
