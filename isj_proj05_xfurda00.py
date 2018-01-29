@@ -6,7 +6,7 @@
 import re
 import bisect
 
-NONE = object() # Empty object for checking optional parameters
+NONE = object()	# Empty object for checking optional parameters
 
 class Polynomial:
 	"Polynomial class represented as list"
@@ -16,85 +16,85 @@ class Polynomial:
 
 
 	def __init__(self, *params1, **params2):
-		self.values = [] 																														# Create empty list for base values
+		self.values = []	# Create empty list for base values
 
-		if len(params1) == 1 and len(params2) == 0 and isinstance(params1, tuple): 	# Check for first type of parameters
+		if len(params1) == 1 and len(params2) == 0 and isinstance(params1, tuple):	# Check for first type of parameters
 			paramlist = params1[0]
-		elif len(params1) > 0 and len(params2) == 0: 																# Check for second type of parameters
+		elif len(params1) > 0 and len(params2) == 0:	# Check for second type of parameters
 			paramlist = list(params1)
-		elif len(params1) == 0 and len(params2) > 0:  															# Check for third type of parameters	
-			exp = []   																																# Create empty list for exponents
-			base = [] 																																# Create empty list for base values
-			for dic in params2.items(): 																							# Cycle for every parameter
-				if isinstance(dic[0], str) == 0 or re.search(r'^x[0-9]+$',dic[0]) == 0 or isinstance(dic[1], int) == 0: # Check for correct form
+		elif len(params1) == 0 and len(params2) > 0:	# Check for third type of parameters	
+			exp = []	# Create empty list for exponents
+			base = []	# Create empty list for base values
+			for dic in params2.items():	# Cycle for every parameter
+				if isinstance(dic[0], str) == 0 or re.search(r'^x[0-9]+$',dic[0]) == 0 or isinstance(dic[1], int) == 0:	# Check for correct form
 					raise ValueError()
 				else:
-					exp.append(dic[0][1:]) 																								# Add exponent to end of list
-					base.append(dic[1]) 																									# Add base to end of list
+					exp.append(dic[0][1:])	# Add exponent to end of list
+					base.append(dic[1])	# Add base to end of list
 				
-			exp, base = (list(t) for t in zip(*sorted(zip(exp, base)))) 							# Sort base and exponent based on exponent value			
+			exp, base = (list(t) for t in zip(*sorted(zip(exp, base))))	# Sort base and exponent based on exponent value			
 	
-			paramlist = [] 																														# Create empty list for parameters
-			i = 0 																																		# Counter for going through every exponent
-			e = 0 																																		# Counter for going through original list of base
-			while i <= int(exp[-1]):  																								# Cycle for every exponent
-				if i == int(exp[e]):																										# If this exponent was in original list
-					paramlist.append(int(base[e])) 																				# Add exponent to end of the list
+			paramlist = []	# Create empty list for parameters
+			i = 0	# Counter for going through every exponent
+			e = 0	# Counter for going through original list of base
+			while i <= int(exp[-1]):	# Cycle for every exponent
+				if i == int(exp[e]):	# If this exponent was in original list
+					paramlist.append(int(base[e]))	# Add exponent to end of the list
 					e +=1
 				else:
-					paramlist.append(0) 																									# Add zero to end of the list 
+					paramlist.append(0)	# Add zero to end of the list 
 				i += 1
 		
-		for param in paramlist: 																										# For every paramater in new parametrs ist
-			if isinstance(param, int) == False:  																			# Check for correct type of parameter 
+		for param in paramlist:	# For every paramater in new parametrs ist
+			if isinstance(param, int) == False:	# Check for correct type of parameter 
 				raise ValueError()
 		
-		self.values = paramlist 																										# Save list of parameters to instance of class
+		self.values = paramlist	# Save list of parameters to instance of class
 
 
 
 	def __str__(self):
-		res = ""   															# Create empty variable for result
+		res = ""	# Create empty variable for result
 		
-		index = len(self.values)-1 							# Max value of index (= exponent) 
-		for base in self.values[::-1]: 					# Backward cycle for every base 
+		index = len(self.values)-1	# Max value of index (= exponent) 
+		for base in self.values[::-1]:	# Backward cycle for every base 
 		
-			if base == 0: 												# Don't write if base is zero
+			if base == 0:	# Don't write if base is zero
 				index -= 1
-				continue   													# Skip to next base
+				continue	# Skip to next base
 			
-			if base == -1 and index != 0: 				# Don't write 1 if it's -1
+			if base == -1 and index != 0:	# Don't write 1 if it's -1
 				base = " - "
-			elif base == 1 and index != 0: 				# Don't write number if it's +1
+			elif base == 1 and index != 0:	# Don't write number if it's +1
 				base = " + "
-			elif base < 0: 												# If number is negative
+			elif base < 0:	# If number is negative
 				base = " - {:d}".format(abs(base))
-			else: 																# If number is positive
+			else:	# If number is positive
 				base = " + {:d}".format(base)
 			
-			if index == 0: 												# If exponent is 0 then x^0=1 -> exp part is empty
+			if index == 0:	# If exponent is 0 then x^0=1 -> exp part is empty
 				exp = ""
-			elif index == 1: 											# If exponent is 1 then x^1=x
+			elif index == 1:	# If exponent is 1 then x^1=x
 				exp = "x"
-			else: 																# Use normal form for every other exponent
+			else:	# Use normal form for every other exponent
 				exp = "x^{:d}".format(index)
 			
-			res += "{:s}{:s}".format(base,exp)  	# Add current part of polynomial	
+			res += "{:s}{:s}".format(base,exp)	# Add current part of polynomial	
 			index -= 1
 
-		if res[:2] == " +":											# If first number is postitive
-			return res[3:] 												# Cut first three characters
-		if res[:2] == " -": 										# If first number is negative
-			return res[1:] 												# Cut first two characters
-		if res == "": 													# If there are nothing to print
-			return "0" 														# Return zero
+		if res[:2] == " +":	# If first number is postitive
+			return res[3:]	# Cut first three characters
+		if res[:2] == " -":	# If first number is negative
+			return res[1:]	# Cut first two characters
+		if res == "":	# If there are nothing to print
+			return "0"	# Return zero
 		
-		return res															# Return result
+		return res	# Return result
 	
 			
 			
 	def __add__(self, other):
-		if len(self.values) > len(other.values): # Findout which polynom has biggest exponent
+		if len(self.values) > len(other.values):	# Findout which polynom has biggest exponent
 			big = self.values[:]
 			small = other.values[:]
 		else:
@@ -102,15 +102,15 @@ class Polynomial:
 			small = self.values[:]		
 			
 		i = 0		
-		while i < len(small): 		# Cycle for every part in shorter polynom 
-			big[i] += small[i] 			# Add value of shorter polynom to longer  
+		while i < len(small):	# Cycle for every part in shorter polynom 
+			big[i] += small[i]	# Add value of shorter polynom to longer  
 			i += 1
-		return Polynomial(big) 		# Return longer polynom
+		return Polynomial(big)	# Return longer polynom
 				
 				
 				
 	def __eq__(self, other):
-		if str(self) == str(other): 	# If printed polynom is same as the second one
+		if str(self) == str(other):	# If printed polynom is same as the second one
 			return True
 		else:
 			return False
@@ -119,76 +119,76 @@ class Polynomial:
 			
 	def derivative(self):
 		i = 0
-		res = [0]*(len(self.values)-1) 	# Create empty list for result
+		res = [0]*(len(self.values)-1)	# Create empty list for result
 		
-		if res == []: 									# If there is only first exponent
+		if res == []:	# If there is only first exponent
 			return 0
 		
-		for value in self.values: 			# For every base in polynom
-			res[i-1] = value*i 						# Count derivated value
+		for value in self.values:	# For every base in polynom
+			res[i-1] = value*i	# Count derivated value
 			i += 1
-		return Polynomial(res) 					# Return derivated polynom
+		return Polynomial(res)	# Return derivated polynom
 		
 		
 		
 	def at_value(self, val1, val2=NONE):
 		
-		if isinstance(val1, int) == 0 and isinstance(val1, float) == 0: # Check if first parameter is in correct form
+		if isinstance(val1, int) == 0 and isinstance(val1, float) == 0:	# Check if first parameter is in correct form
 			raise ValueError()
 			
-		res1 = 0  										# Variable for first result
-		res2 = 0 											# Variable for second result
-		exp = 0 											# Counter for exponent
+		res1 = 0	# Variable for first result
+		res2 = 0	# Variable for second result
+		exp = 0	# Counter for exponent
 		
-		for base in self.values: 			# For every base in polynom
-			res1 += base*(val1**exp) 		# Count value of this part of polynom
+		for base in self.values:	# For every base in polynom
+			res1 += base*(val1**exp)	# Count value of this part of polynom
 			exp += 1
 			
 			
-		if val2 == NONE: 							# If there is not second parameter
-			return res1 								# Return first result
+		if val2 == NONE:	# If there is not second parameter
+			return res1	# Return first result
 		else: 
 			
-			if isinstance(val2, int) == 0 and isinstance(val2, float) == 0: # Check if second parameter is in correct form
+			if isinstance(val2, int) == 0 and isinstance(val2, float) == 0:	# Check if second parameter is in correct form
 				raise ValueError()
 			
 			exp = 0	
-			for base in self.values: 		# For every base in polynom
-				res2 += base*(val2**exp) 	# Count value of this part of polynom
+			for base in self.values:	# For every base in polynom
+				res2 += base*(val2**exp)	# Count value of this part of polynom
 				exp += 1
-			return res2-res1 						# Return difference between first result and second result
+			return res2-res1	# Return difference between first result and second result
 
 
 
 
 	def __pow__(self, power):
-		tmp = self.values[:] 					# Copy base list
+		tmp = self.values[:]	# Copy base list
 
-		if power < 0: 								# Check if power dont have wrong value
+		if power < 0:	# Check if power dont have wrong value
 			raise ValueError()
 					
-		if power == 1: 								# Check if power is one
-			return self 								# Don't change anything
-		if power == 0: 								# Check if power is zero
-			return Polynomial([1]) 			# Return zero
+		if power == 1:	# Check if power is one
+			return self	# Don't change anything
+		if power == 0:	# Check if power is zero
+			return Polynomial([1])	# Return zero
 		
 		i = 1
-		while i < power: 							# Cycle for every iterration
+		while i < power:	# Cycle for every iterration
 			a = 0
 			b = 0
-			res = [0]*(len(tmp)+1) 			# Create empty list for result
+			res = [0]*(len(tmp)+1)	# Create empty list for result
 			
 			while a < len(self.values):
 				while b < len(tmp):
-					res[a+b] += self.values[a] * tmp[b] # Count temporary calculation 
+					res[a+b] += self.values[a] * tmp[b]	# Count temporary calculation 
 					b += 1
 				a += 1
 				b = 0
 				
-			tmp = res 									# Save result to temporary variable
+			tmp = res	# Save result to temporary variable
 			i += 1
 			
-		return Polynomial(res) 				# Return result
+		return Polynomial(res)	# Return result
 
 def test():
     assert str(Polynomial(0,1,0,-1,4,-2,0,1,3,0)) == "3x^8 + x^7 - 2x^5 + 4x^4 - x^3 + x"
